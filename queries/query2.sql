@@ -1,0 +1,5 @@
+SELECT (YEAR(NOW()) - YEAR(fecha_ingreso) + 18) AS EDAD, COUNT(fecha_ingreso) AS TOTAL
+FROM activos
+GROUP BY EDAD
+ORDER BY TOTAL DESC
+LIMIT 5;

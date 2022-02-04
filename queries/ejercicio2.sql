@@ -1,0 +1,12 @@
+DROP PROCEDURE IF EXISTS SP_ANTIGUEDAD;
+
+DELIMITER $$
+CREATE PROCEDURE SP_ANTIGUEDAD(
+	IN anio int)
+BEGIN
+	SELECT (YEAR(CURDATE()) - YEAR(fecha_ingreso)) as antiguedad, COUNT(*) as total FROM activos 
+    WHERE (YEAR(CURDATE()) - YEAR(fecha_ingreso)) = anio GROUP BY antiguedad;
+END $$
+DELIMITER ;
+
+CALL SP_ANTIGUEDAD(12);
